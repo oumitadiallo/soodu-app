@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Products from "./pages/Products";
+import AdminProducts from "./pages/AdminProducts";
+import ProductForm from "./pages/ProductForm";
 import ProtectedRoute from "./ProtectedRoute";
 import AppLayout from "./AppLayout";
 
@@ -24,9 +26,23 @@ export default function App() {
             path="/admin"
             element={
               <ProtectedRoute role="admin">
-                <h1 className="text-2xl font-bold tracking-tight">
-                  Espace admin (a venir)
-                </h1>
+                <AdminProducts />
+              </ProtectedRoute>
+            }
+          />
+                    <Route
+            path="/admin/products/new"
+            element={
+              <ProtectedRoute role="admin">
+                <ProductForm />
+              </ProtectedRoute>
+            }
+          />
+                    <Route
+            path="/admin/products/:id/edit"
+            element={
+              <ProtectedRoute role="admin">
+                <ProductForm />
               </ProtectedRoute>
             }
           />
