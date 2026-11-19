@@ -7,7 +7,7 @@ export default function LogoutButton() {
   const handleLogout = async () => {
     try {
       await api.post("/logout");
-    } catch  {
+    } catch {
       // meme si l'API echoue, on deconnecte cote navigateur
     }
     localStorage.removeItem("token");
@@ -15,5 +15,9 @@ export default function LogoutButton() {
     navigate("/login");
   };
 
-  return <button onClick={handleLogout}>Se deconnecter</button>;
+  return (
+    <button onClick={handleLogout} className="fi-btn fi-btn-gray">
+      Se deconnecter
+    </button>
+  );
 }
